@@ -13,14 +13,20 @@ remove_learners
 
 # 2. Inheritance
 
-class name:
-  def 
+class learner:
+  def __init__(self, learner):
+    self.name = learner
+
+    def greet(learner):
+      print(f"Hello!, {learner.name}!")
 
 class age:
-  def
+  def __init__(self, age):
+    self.name = age
 
 class Learner(Person):
-  def 
+  def __init__(self, Learner(Person))
+  self.name = Learner(Person)
 
 # 3. Assessment and Marks
 
@@ -77,7 +83,7 @@ for i in range(1, 9):
   print(i)
 
 
-for i in range (1, 6):
+for i in range(1, 6):
   if i == 3:
     continue
   print(i)
@@ -87,6 +93,9 @@ mark = 1
 while mark <= 0:
   print(mark)
   mark += 1
+
+for subject in learner:
+  print(subject, learner(subject))
 
 # 7. Functions
 
@@ -143,7 +152,26 @@ tests = ["test1", "test2", "test3"]
 for tests in tests:
   return tests
 
+learner = {
+  "name": "John",
+  "Mathematics": "80",
+  "Programming": "85",
+  "English": "90"
+}
 
+learners = [
+  {"name": "John", "mark": 80},
+  {"name": "Sarah", "mark": 65},
+  {"name": "Mike", "mark": 50},
+]
+
+for learner in learners:
+  print(learner["name"], learner["mark"])
+
+learners = ["John", "Sarah", "Mike"]
+  
+  pass = list(filter(is_pass, learners))
+print(pass)
 
 # 11. GUI Requirement
 
