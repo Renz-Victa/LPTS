@@ -40,7 +40,13 @@ class Learner(Person):
   def __init__(self, Learner(Person))
   self.name = Learner(Person)
 
-# 3. Assessment and Marks
+# 3. Encapsulation
+
+class Person:
+    def __init__(self, name):
+      self.name = name
+
+# 4. Assessment and Marks
 
 class AverageMark:
   def __init__(average_mark, balance):
@@ -57,10 +63,6 @@ mark = AverageMark(50)
 mark.display(500)
 
 print(mark.get_balance())
-
-# 4. Assessment and Marks
-
-qwertyuiop
 
 # Decision Structures
 
