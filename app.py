@@ -1,10 +1,15 @@
 # 1. Learner Management
 
-learner_id =
-name = 
-age = 
-course = 
-marks = 
+class learner_id:
+  pass
+class name:
+  pass 
+class age: 
+  pass
+class course: 
+  pass
+class marks:
+  pass 
 
 add_new_learners
 view_learner_details
@@ -14,11 +19,18 @@ remove_learners
 # 2. Inheritance
 
 class learner:
-  def __init__(self, learner):
-    self.name = learner
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
 
     def greet(learner):
       print(f"Hello!, {learner.name}!")
+
+class Learner(Person):
+  def __init__(self, name, age, learner_id):
+    super().__init__(name, age)
+
+    self.learner_id = learner_id
 
 class age:
   def __init__(self, age):
@@ -126,10 +138,11 @@ bool = False
 
 # 8. Recursion
 
-def sum():
-  print("Calculates the sum of all marks in a learner's marks list")
-
-def number_of_learners():
+def recursive_sum(marks):
+  if len(marks) == 0
+  return 0
+  count = len(people)
+  print("Number of people in the system:")
 
 
 # 9. Exception Handling
@@ -138,13 +151,31 @@ try:
   test1 = int(input("Enter the mark for test1: "))
   test2 = int(input("Enter the mark for test2: "))
   result = (test1 + test2) // 2
+  if mark < 0 or mark > 100:
+    print("Invalid mark: must be between 0 and 100")
 except ValueError:
   print("Please enter a valid number!")
+except ZeroDivisionError:
+    print("Cannot be divided by zero")
 else: 
   print("The Result is:", result) 
 finally: 
   print("Tests are finished!")
 
+print("1. Add Student")
+print("2. View Students")
+print("3. Exit")
+  
+choice = input("Select an option: ")
+  
+if choice == "1":
+    print("Adding student...")
+elif choice == "2":
+    print("Viewing students...")
+elif choice == "3":
+    print("Exiting...")
+else: 
+    print("Menu selection error: Invalid option chosen")
 
 # 10. Lists
 
@@ -172,6 +203,14 @@ learners = ["John", "Sarah", "Mike"]
   
   pass = list(filter(is_pass, learners))
 print(pass)
+
+if 80 in learner:
+  print("Found")
+else: print("Not Found")
+
+for l in learner:
+  if l > 50:
+    print(l)
 
 # 11. GUI Requirement
 
