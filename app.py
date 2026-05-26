@@ -92,28 +92,25 @@ class AverageMark:
     add_mark()
     self.__balance += amount
 
+# ==============================
 # Decision Structures
+# ==============================
 
-learner_age = 18
-
+def check_eligibility(learner_age):
 if learner_age >= 18:
   print("Eligible to study at Eduvos")
 else: 
   print("Not Eligible to study at Eduvos")
 
-mark = 50
-
+def grade_mark(mark):
 if mark >= 75:
-  print("Distinction")
-elif score >= 60:
-  print("Grade B")
-elif score >= 50:
-  print("Grade C")
+  print("Pass with Distinction")
+elif mark >= 50:
+  print("Pass")
 else:
   print("Fail")
 
-mark = 50
-
+def check_certificates(mark):
 if mark >= 50:
   print("Learner qualifies for a certificate")
 
