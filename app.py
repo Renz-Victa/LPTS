@@ -48,22 +48,16 @@ class learner:
     self.name = name
     self.age = age
 
-    def greet(learner):
-      print(f"Hello!, {learner.name}!")
+    def greet(self):
+      print(f"Hello!, {self.name}!")
 
 class Learner(Person):
   def __init__(self, name, age, learner_id):
     super().__init__(name, age)
-
     self.learner_id = learner_id
 
-class age:
-  def __init__(self, age):
-    self.name = age
-
-class Learner(Person):
-  def __init__(self, Learner(Person))
-  self.name = Learner(Person)
+  def display_info(self):
+    print(f"Student ID: {self.learner_id} | Name: {self.name} | Age: {self.age}")
 
 # 3. Encapsulation
 
