@@ -99,31 +99,31 @@ class AverageMark:
 # ==============================
 
 def check_eligibility(learner_age):
-if learner_age >= 18:
-  print("Eligible to study at Eduvos")
-else: 
-  print("Not Eligible to study at Eduvos")
+  if learner_age >= 18:
+    print("Eligible to study at Eduvos")
+  else: 
+    print("Not Eligible to study at Eduvos")
 
 def grade_mark(mark):
-if mark >= 75:
-  print("Pass with Distinction")
-elif mark >= 50:
-  print("Pass")
-else:
-  print("Fail")
+  if mark >= 75:
+    print("Pass with Distinction")
+  elif mark >= 50:
+    print("Pass")
+  else:
+    print("Fail")
 
 def check_certificates(mark):
-if mark >= 50:
-  print("Learner qualifies for a certificate")
+  if mark >= 50:
+    print("Learner qualifies for a certificate")
 
 # ==============================
 # 6. Repetition Structures
 # ==============================
 
 def demo_loops():
-for i in range(1, 9):
-  if i == 10:
-    break
+  for i in range(1, 9):
+    if i == 10:
+      break
   print(i)
 
 print("---")
@@ -179,8 +179,8 @@ def predictive(mark):
 # ==============================
 
 def recursive_sum(marks):
-  if len(marks) == 0
-  return 0
+  if len(marks) == 0:
+    return 0
   return marks[0]
 
 def count_learners(learner_list):
@@ -195,28 +195,29 @@ def count_learners(learner_list):
 # ==============================
 
 def get_average_mark():
-try: 
-  test1 = int(input("Enter the mark for test1: "))
-  test2 = int(input("Enter the mark for test2: "))
+  try: 
+    test1 = int(input("Enter the mark for test1: "))
+    test2 = int(input("Enter the mark for test2: "))
 
   if not (0 <= test1 <= 100) or not(0 <= test2 <= 100):
     raise ValueError("Invalid mark: must be between 0 and 100")
   
   result = (test1 + test2) / 2
 
+def entering_learner_mark():
 except ValueError as e:
-  print("Please enter a valid number! ({e})")
+print("Please enter a valid number! ({e})")
 except ZeroDivisionError:
-    print("Cannot be divided by zero")
+print("Cannot be divided by zero")
 else: 
-  print("The Result is:", result) 
+print("The Result is:", result) 
 finally: 
   print("Tests are finished!")
 
 def show_menu():
-print("1. Add Student")
-print("2. View Students")
-print("3. Exit")
+  print("1. Add Student")
+  print("2. View Students")
+  print("3. Exit")
   
 choice = input("Select an option: ")
   
@@ -234,7 +235,7 @@ else:
 # ==============================
 
 def demo_lists():
-tests = ["test1", "test2", "test3"]
+  tests = ["test1", "test2", "test3"]
 for tests in tests:
   return tests
 
@@ -275,11 +276,11 @@ root = tk.Tk()
 root.withdraw()
 
 def gui_feedback():
-response = messagebox.askyesno("Confirm", "Do you want to delete this learner?")
-print(response)
+  response = messagebox.askyesno("Confirm", "Do you want to delete this learner?")
+  print(response)
 
-response = messagebox.askokcancel("Save", "Do you want to save changes?")
-print(response)
+  response = messagebox.askokcancel("Save", "Do you want to save changes?")
+  print(response)
 
 def gui_messages():
   response = messagebox.askyesno("Confirm", "Do you want to undo changes?")
