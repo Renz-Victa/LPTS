@@ -169,16 +169,24 @@ def display_learner_summary():
 def search_learner_by_id(learner_id):
   print("Searching a learner by ID")
 
-def is_passing(mark):
+def predictive(mark):
   return mark >= 50
 
+# ==============================
 # 8. Recursion
+# ==============================
 
 def recursive_sum(marks):
   if len(marks) == 0
   return 0
-  count = len(people)
-  print("Number of people in the system:")
+  return marks[0]
+
+def count_learners(learner_list):
+  if len(learner_list) == 0:
+    return 0
+  count = 1 + count_learners(learner_list[1:])
+  print(f"Number of learners counted so far: {count}")
+  return count
 
 
 # 9. Exception Handling
