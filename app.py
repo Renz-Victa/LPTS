@@ -2,6 +2,8 @@
 # Learner Progress Tracking System
 # ==============================
 
+import tkinter as tk
+from tkinter import messagebox
 # ==============================
 # 1. Learner Management
 # ==============================
@@ -254,7 +256,7 @@ for learner_record in learners:
 
 learners = ["John", "Sarah", "Mike"]
   
-passing_leraners = list(filter(lambda 1: is_passing(1["mark"]), learners))
+passing_learners = list(filter(lambda 1: is_passing(1["mark"]), learners))
 print("Passing learners:", passing_learners)
 
 if 80 in learner:
@@ -265,4 +267,33 @@ for score in learner.items():
   if score > 50:
     print(subject, score)
 
+# ==============================
 # 11. GUI Requirement
+# ==============================
+
+root = tk.Tk()
+root.withdraw()
+
+def gui_feedback():
+response = messagebox.askyesno("Confirm", "Do you want to delete this learner?")
+print(response)
+
+response = messagebox.askokcancel("Save", "Do you want to save changes?")
+print(response)
+
+def gui_messages():
+  response = messagebox.askyesno("Confirm", "Do you want to undo changes?")
+  print(response)
+
+  response = messagebox.showerror("Confirm", "Invalid Input")
+  print(response)
+
+  response = messagebox.showinfo("Confirm", "f"Learner has {learner_mark})
+  print(response)
+
+  response = messagebox.showwarning("Confirm", "Are you sure you want to exit")
+
+entry = tk.Entry(root)
+entry.pacl()
+
+root.mainloop()
