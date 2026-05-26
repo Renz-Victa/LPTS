@@ -188,17 +188,22 @@ def count_learners(learner_list):
   print(f"Number of learners counted so far: {count}")
   return count
 
-
+# ==============================
 # 9. Exception Handling
+# ==============================
 
+def get_average_mark():
 try: 
   test1 = int(input("Enter the mark for test1: "))
   test2 = int(input("Enter the mark for test2: "))
-  result = (test1 + test2) // 2
-  if mark < 0 or mark > 100:
-    print("Invalid mark: must be between 0 and 100")
-except ValueError:
-  print("Please enter a valid number!")
+
+  if not (0 <= test1 <= 100) or not(0 <= test2 <= 100):
+    raise ValueError("Invalid mark: must be between 0 and 100")
+  
+  result = (test1 + test2) / 2
+
+except ValueError as e:
+  print("Please enter a valid number! ({e})")
 except ZeroDivisionError:
     print("Cannot be divided by zero")
 else: 
@@ -206,6 +211,7 @@ else:
 finally: 
   print("Tests are finished!")
 
+def show_menu():
 print("1. Add Student")
 print("2. View Students")
 print("3. Exit")
@@ -257,8 +263,3 @@ for l in learner:
     print(l)
 
 # 11. GUI Requirement
-
-
-
-# 12. Output
-
