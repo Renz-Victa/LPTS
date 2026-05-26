@@ -22,13 +22,22 @@ class marks:
 learners_db = []
 
 def add_new_learners(learner_id, name, age):
+  learner = Learner(learner_id, name, age, subject)
+  learners_db.append(learner)
   print(f"Learner '{name} added successfully.")
+
+def search_learner_by_id(learner_id):
+  for learner in learners_db:
+    if learner.learner_id == learner_id:
+      return learner
+
 def view_learner_details(learner_id):
   learner = search_learner_by_id(learner_id)
   if learner:
-    print(learner)
+    print(learner.display_info())
   else:
     print(f"No learner found with ID: {learner_id}")
+
 def update_learner_details(learner_id):
   learner = search_learner_by_id(learner_id)
   if learner:
@@ -36,20 +45,36 @@ def update_learner_details(learner_id):
       learner.set_name(name)
     if age:
       learner.set.age(age)
+    if subject:
+      learner.set.subject(subject)
     print(f"Learner {learner_id} updated successfully.")
   else:
     print(f"No learner found with ID: {learner_id}")
+
 def remove_learners(learner_id):
   global learners_db
+  learner = search_learner_by_id(learner_id)
+
+  if learner:
+    learners_db.remove(learner)
+    print(f"Learner {learner_id} remove successfully.")
+  else:
+    print(f"No learner found with ID: {learner_id}")
 
 # ==============================
 # 2. Inheritance
 # ==============================
 
 class learner:
-  def __init__(self, name, age):
+  def __init__(self, name, age, subject=""):
+    self.learner_id = learner_id
     self.name = name
     self.age = age
+    self.subject = subject
+    self.marks = []
+
+    if __name__ == "__main__":
+      show_menu()
 
     def greet(self):
       print(f"Hello!, {self.name}!")
@@ -60,7 +85,14 @@ class Learner(Person):
     self.learner_id = learner_id
 
   def display_info(self):
-    print(f"Student ID: {self.learner_id} | Name: {self.name} | Age: {self.age}")
+    print (
+      f"ID: {self.learner_id}"
+      f"Name: {self.name}"
+      f"Age: {self.age}"
+      f"Subject: {self.subject}"
+      f"Average Mark: {self.average_mark().2f}"
+      f"Status: {self.learner_status()}"
+    )
 
 # ==============================
 # 3. Encapsulation
@@ -295,6 +327,6 @@ def gui_messages():
   response = messagebox.showwarning("Confirm", "Are you sure you want to exit")
 
 entry = tk.Entry(root)
-entry.pacl()
+entry.pack()
 
 root.mainloop()
