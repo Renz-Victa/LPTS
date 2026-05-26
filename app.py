@@ -144,16 +144,18 @@ print("---")
 for subject in learner:
   print(subject, learner[subject])
 
+# ==============================
 # 7. Functions
+# ==============================
 
 def add_learner(name):
-  print("Adding a learner", name)
+  print("Adding a learner:", name)
 
 def enter_marks():
   print("Entering marks")
 
 def calculate_average(test1, test2):
-  total = (test1 + test2) // 2
+  total = (test1 + test2) / 2
   return total
 
 average = calculate_average(50, 60)
@@ -161,15 +163,14 @@ print("Total Average:", average)
 
 def display_learner_summary():
   print("Displaying learner summaries")
+  for l in learners_db:
+    print(l)
 
-def search_learner_by_id():
+def search_learner_by_id(learner_id):
   print("Searching a learner by ID")
 
-def predictive():
-  if mark >= 50
-  bool = True
-else:
-bool = False
+def is_passing(mark):
+  return mark >= 50
 
 # 8. Recursion
 
