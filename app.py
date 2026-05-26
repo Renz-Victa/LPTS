@@ -85,14 +85,12 @@ class AverageMark:
   def display(average_mark, amount):
     average_mark.__learner += amount
 
-  def get_balance(average_mark):
-    return average_mark.__learner
+  def get_balance(self):
+    return self.__balance
   
-mark = AverageMark(50)
-
-mark.display(500)
-
-print(mark.get_balance())
+  def add_mark(self, amount):
+    add_mark()
+    self.__balance += amount
 
 # Decision Structures
 
