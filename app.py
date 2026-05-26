@@ -1,4 +1,10 @@
+# ==============================
+# Learner Progress Tracking System
+# ==============================
+
+# ==============================
 # 1. Learner Management
+# ==============================
 
 class learner_id:
   pass
@@ -11,10 +17,29 @@ class course:
 class marks:
   pass 
 
-add_new_learners
-view_learner_details
-update_learner_details
-remove_learners
+learners_db = []
+
+def add_new_learners(learner_id, name, age):
+  print(f"Learner '{name} added successfully.")
+def view_learner_details(learner_id):
+  learner = search_learner_by_id(learner_id)
+  if learner:
+    print(learner)
+  else:
+    print(f"No learner found with ID: {learner_id}")
+def update_learner_details(learner_id):
+  learner = search_learner_by_id(learner_id)
+  if learner:
+    if name:
+      learner.set_name(name)
+    if age:
+      learner.set.age(age)
+    print(f"Learner {learner_id} updated successfully.")
+  else:
+    print(f"No learner found with ID: {learner_id}")
+def remove_learners(learner_id):
+  global learners_db
+
 
 # 2. Inheritance
 
