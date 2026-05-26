@@ -114,18 +114,24 @@ def check_certificates(mark):
 if mark >= 50:
   print("Learner qualifies for a certificate")
 
+# ==============================
 # 6. Repetition Structures
+# ==============================
 
+def demo_loops():
 for i in range(1, 9):
   if i == 10:
     break
   print(i)
 
+print("---")
 
 for i in range(1, 6):
   if i == 3:
     continue
   print(i)
+
+print("---")
   
 mark = 1
 
@@ -133,8 +139,10 @@ while mark <= 0:
   print(mark)
   mark += 1
 
+print("---")
+
 for subject in learner:
-  print(subject, learner(subject))
+  print(subject, learner[subject])
 
 # 7. Functions
 
