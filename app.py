@@ -40,8 +40,9 @@ def update_learner_details(learner_id):
 def remove_learners(learner_id):
   global learners_db
 
-
+# ==============================
 # 2. Inheritance
+# ==============================
 
 class learner:
   def __init__(self, name, age):
@@ -59,13 +60,23 @@ class Learner(Person):
   def display_info(self):
     print(f"Student ID: {self.learner_id} | Name: {self.name} | Age: {self.age}")
 
+# ==============================
 # 3. Encapsulation
+# ==============================
 
 class Person:
     def __init__(self, name):
-      self.name = name
+      self.__name = name
 
+    def average_mark(self):
+      return self.__average_mark
+    
+    def learner_status(self):
+      return self.__learner_status
+
+# ==============================
 # 4. Assessment and Marks
+# ==============================
 
 class AverageMark:
   def __init__(average_mark, balance):
