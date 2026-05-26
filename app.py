@@ -227,8 +227,11 @@ elif choice == "3":
 else: 
     print("Menu selection error: Invalid option chosen")
 
+# ==============================
 # 10. Lists
+# ==============================
 
+def demo_lists():
 tests = ["test1", "test2", "test3"]
 for tests in tests:
   return tests
@@ -246,20 +249,20 @@ learners = [
   {"name": "Mike", "mark": 50},
 ]
 
-for learner in learners:
-  print(learner["name"], learner["mark"])
+for learner_record in learners:
+  print(learner_record["name"], learner_record["mark"])
 
 learners = ["John", "Sarah", "Mike"]
   
-  pass = list(filter(is_pass, learners))
-print(pass)
+passing_leraners = list(filter(lambda 1: is_passing(1["mark"]), learners))
+print("Passing learners:", passing_learners)
 
 if 80 in learner:
   print("Found")
 else: print("Not Found")
 
-for l in learner:
-  if l > 50:
-    print(l)
+for score in learner.items():
+  if score > 50:
+    print(subject, score)
 
 # 11. GUI Requirement
