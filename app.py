@@ -21,8 +21,8 @@ class marks:
 
 learners_db = []
 
-def add_new_learners(learner_id, name, age):
-  learner = Learner(learner_id, name, age, subject)
+def add_new_learners(learner_id, name, age, course=""):
+  learner = Learner(learner_id, name, age, course)
   learners_db.append(learner)
   print(f"Learner '{name} added successfully.")
 
@@ -66,11 +66,11 @@ def remove_learners(learner_id):
 # ==============================
 
 class learner:
-  def __init__(self, name, age, subject=""):
+  def __init__(self, name, age, course=""):
     self.learner_id = learner_id
     self.name = name
     self.age = age
-    self.subject = subject
+    self.course = course
     self.marks = []
 
     if __name__ == "__main__":
@@ -79,10 +79,22 @@ class learner:
     def greet(self):
       print(f"Hello!, {self.name}!")
 
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
 class Learner(Person):
-  def __init__(self, name, age, learner_id):
+  def __init__(self, name, age, learner_id, course=""):
     super().__init__(name, age)
     self.learner_id = learner_id
+    self.course = course
+    self.marks = []
+
+  def learner_status(self):
+    if self.average_mark() >= 50:
+      return "Passing"
+    return "Failing"
 
   def display_info(self):
     print (
@@ -90,7 +102,7 @@ class Learner(Person):
       f"Name: {self.name}"
       f"Age: {self.age}"
       f"Subject: {self.subject}"
-      f"Average Mark: {self.average_mark().2f}"
+      f"Average Mark: {self.average_mark():.2f}"
       f"Status: {self.learner_status()}"
     )
 
@@ -113,17 +125,16 @@ class Person:
 # ==============================
 
 class AverageMark:
-  def __init__(average_mark, balance):
-    average_mark.__learner = balance
+  def __init__(self):
+    self.__balance = 0
   
-  def display(average_mark, amount):
-    average_mark.__learner += amount
+  def display(self):
+    print("Current balance:", self.__balance)
 
   def get_balance(self):
     return self.__balance
   
   def add_mark(self, amount):
-    add_mark()
     self.__balance += amount
 
 # ==============================
@@ -175,8 +186,10 @@ while mark <= 0:
 
 print("---")
 
-for subject in learner:
-  print(subject, learner[subject])
+learner = Learner()
+
+for subject, mark in learner.items():
+  print(subject, mark)
 
 # ==============================
 # 7. Functions
@@ -231,20 +244,30 @@ def get_average_mark():
     test1 = int(input("Enter the mark for test1: "))
     test2 = int(input("Enter the mark for test2: "))
 
-  if not (0 <= test1 <= 100) or not(0 <= test2 <= 100):
-    raise ValueError("Invalid mark: must be between 0 and 100")
+    if not (0 <= test1 <= 100) or not(0 <= test2 <= 100):
+      raise ValueError("Invalid mark: must be between 0 and 100")
   
-  result = (test1 + test2) / 2
+    result = (test1 + test2) / 2
+    return result
+
+  except ValueError as e: 
+    print(e)
 
 def entering_learner_mark():
-except ValueError as e:
-print("Please enter a valid number! ({e})")
-except ZeroDivisionError:
-print("Cannot be divided by zero")
-else: 
-print("The Result is:", result) 
-finally: 
-  print("Tests are finished!")
+  try: 
+    test1 = int(input("Enter the mark for test1: "))
+    test2 = int(input("Enter the mark for test2: "))
+
+    result = (test1 + test2) / 2
+
+  except ValueError as e:
+    print("Please enter a valid number! ({e})")
+  except ZeroDivisionError:
+    print("Cannot be divided by zero")
+  else: 
+    print("The Result is:", result) 
+  finally: 
+    print("Tests are finished!")
 
 def show_menu():
   print("1. Add Student")
@@ -268,35 +291,39 @@ else:
 
 def demo_lists():
   tests = ["test1", "test2", "test3"]
-for tests in tests:
-  return tests
 
-learner = {
+  for tests in tests:
+    print(tests)
+
+student = {
   "name": "John",
   "Mathematics": "80",
   "Programming": "85",
   "English": "90"
 }
 
-learners = [
+students = [
   {"name": "John", "mark": 80},
   {"name": "Sarah", "mark": 65},
   {"name": "Mike", "mark": 50},
 ]
 
-for learner_record in learners:
-  print(learner_record["name"], learner_record["mark"])
+for student_record in students:
+  print(student_record["name"], student_record["mark"])
 
-learners = ["John", "Sarah", "Mike"]
+students = ["John", "Sarah", "Mike"]
   
-passing_learners = list(filter(lambda 1: is_passing(1["mark"]), learners))
-print("Passing learners:", passing_learners)
+def is_passing(mark):
+  return mark >= 50
 
-if 80 in learner:
+passing_students = list(filter(lambda student: is_passing(student["mark"]), students))
+print("Passing students:", passing_students)
+
+if 80 in student:
   print("Found")
 else: print("Not Found")
 
-for score in learner.items():
+for score in student.items():
   if score > 50:
     print(subject, score)
 
@@ -321,7 +348,7 @@ def gui_messages():
   response = messagebox.showerror("Confirm", "Invalid Input")
   print(response)
 
-  response = messagebox.showinfo("Confirm", "f"Learner has {learner_mark})
+  response = messagebox.showinfo("Confirm", f"Learner has {mark}")
   print(response)
 
   response = messagebox.showwarning("Confirm", "Are you sure you want to exit")
