@@ -1,35 +1,21 @@
 # ==============================
 # Learner Progress Tracking System
+# EDUV12466121@vossie.net
+# Date: 02/05/2026
 # ==============================
 
-import tkinter as tk
-from tkinter import messagebox
+from tkinter import Tk, messagebox
+
 # ==============================
 # 1. Learner Management
 # ==============================
-
-class learner_id:
-  pass
-class name:
-  pass 
-class age: 
-  pass
-class course: 
-  pass
-class marks:
-  pass 
 
 learners_db = []
 
 def add_new_learners(learner_id, name, age, course=""):
   learner = Learner(learner_id, name, age, course)
   learners_db.append(learner)
-  print(f"Learner '{name} added successfully.")
-
-def search_learner_by_id(learner_id):
-  for learner in learners_db:
-    if learner.learner_id == learner_id:
-      return learner
+  print(f"Learner '{name} added successfully.") 
 
 def view_learner_details(learner_id):
   learner = search_learner_by_id(learner_id)
@@ -90,6 +76,8 @@ class Learner(Person):
     self.learner_id = learner_id
     self.course = course
     self.marks = []
+    self.__average_mark 
+    self.__learner_status 
 
   def learner_status(self):
     if self.average_mark() >= 50:
@@ -134,8 +122,10 @@ class AverageMark:
   def get_balance(self):
     return self.__balance
   
-  def add_mark(self, amount):
-    self.__balance += amount
+  def add_mark(self, mark):
+    self.__balance += mark
+    self.marks.append(mark)
+    self.__average_mark >= CERTIFICATE_MARK
 
 # ==============================
 # Decision Structures
@@ -147,10 +137,10 @@ def check_eligibility(learner_age):
   else: 
     print("Not Eligible to study at Eduvos")
 
-def grade_mark(mark):
-  if mark >= 75:
+def grade_mark(average):
+  if average >= 75:
     print("Pass with Distinction")
-  elif mark >= 50:
+  elif average >= 50:
     print("Pass")
   else:
     print("Fail")
@@ -163,7 +153,7 @@ def check_certificates(mark):
 # 6. Repetition Structures
 # ==============================
 
-def demo_loops():
+def recursive_total():
   for i in range(1, 9):
     if i == 10:
       break
@@ -201,9 +191,10 @@ def add_learner(name):
 def enter_marks():
   print("Entering marks")
 
-def calculate_average(test1, test2):
-  total = (test1 + test2) / 2
-  return total
+def calculate_average(marks):
+  if not marks:
+    return 0.0
+  return recursive_total(marks)/len(marks)
 
 average = calculate_average(50, 60)
 print("Total Average:", average)
@@ -213,8 +204,11 @@ def display_learner_summary():
   for l in learners_db:
     print(l)
 
-def search_learner_by_id(learner_id):
-  print("Searching a learner by ID")
+def search_learner_by_id(learners, learner_id):
+  for learner in learners:
+    if learner.learner_id == learner_id:
+      return learner
+  return None
 
 def predictive(mark):
   return mark >= 50
@@ -253,12 +247,14 @@ def get_average_mark():
   except ValueError as e: 
     print(e)
 
-def entering_learner_mark():
-  try: 
-    test1 = int(input("Enter the mark for test1: "))
-    test2 = int(input("Enter the mark for test2: "))
+def read_mark(prompt="Enter mark: ")
 
-    result = (test1 + test2) / 2
+def entering_learner_mark(prompt):
+  try: 
+    value = int(input(prompt))
+    if value <= 0:
+      raise ValueError("Value must be greater than zero")
+    return value
 
   except ValueError as e:
     print("Please enter a valid number! ({e})")
@@ -268,6 +264,7 @@ def entering_learner_mark():
     print("The Result is:", result) 
   finally: 
     print("Tests are finished!")
+
 
 def show_menu():
   print("1. Add Student")
