@@ -12,11 +12,27 @@ from tkinter import Tk, messagebox
 
 learners_db = []
 
-def add_new_learners(learner_id, name, age, course=""):
-  learner = Learner(learner_id, name, age, course)
-  learners_db.append(learner)
-  print(f"Learner '{name} added successfully.") 
+def add_new_learners(learner_id, learner, name, age, course=""):
+  learner = Learner(learner_id, learner, name, age, course)
+  learners_db.append(learner, learner_id, name, age, course)
 
+  learner_id = entering_learner_mark("Enter learner ID: ") 
+  print("Adding a new learner...")
+
+  if learners_db(learner, learner_id):
+    messagebox.showerror("Duplicate ID", "A learner with this ID already exists.")
+    return
+  
+  name = input("Enter learner name: ").strip()
+  age = entering_learner_mark("Enter learner age: ")
+
+  if not check_eligibility(age):
+    messagebox.showerror("Invalid Input", "Learner age is not valid.")
+    return 
+  
+  course = input("Enter a course name: ").strip()
+  messagebox.showinfo("Success", "Learner added successfully")
+  
 def view_learner_details(learner_id):
   learner = search_learner_by_id(learner_id)
   if learner:
@@ -84,16 +100,6 @@ class Learner(Person):
       return "Passing"
     return "Failing"
 
-  def display_info(self):
-    print (
-      f"ID: {self.learner_id}"
-      f"Name: {self.name}"
-      f"Age: {self.age}"
-      f"Subject: {self.subject}"
-      f"Average Mark: {self.average_mark():.2f}"
-      f"Status: {self.learner_status()}"
-    )
-
 # ==============================
 # 3. Encapsulation
 # ==============================
@@ -125,7 +131,7 @@ class AverageMark:
   def add_mark(self, mark):
     self.__balance += mark
     self.marks.append(mark)
-    self.__average_mark >= CERTIFICATE_MARK
+    self.__average_mark >= certificate
 
 # ==============================
 # Decision Structures
@@ -145,7 +151,7 @@ def grade_mark(average):
   else:
     print("Fail")
 
-def check_certificates(mark):
+def certificate(mark):
   if mark >= 50:
     print("Learner qualifies for a certificate")
 
@@ -185,9 +191,6 @@ for subject, mark in learner.items():
 # 7. Functions
 # ==============================
 
-def add_learner(name):
-  print("Adding a learner:", name)
-
 def enter_marks():
   print("Entering marks")
 
@@ -199,10 +202,15 @@ def calculate_average(marks):
 average = calculate_average(50, 60)
 print("Total Average:", average)
 
-def display_learner_summary():
-  print("Displaying learner summaries")
-  for l in learners_db:
-    print(l)
+def display_learner_summary(learner):
+  print("Displaying learner summaries...")
+  print("\nLearner Summary")
+  print(f"Learner ID: {learner.learner_id}")
+  print(f"Name: {learner.name}")
+  print(f"Age: {learner.age}")
+  print(f"Marks: {learner.mark}")
+  print(f"Average: {learner.average_mark:.2f}")
+  print(f"Results: {learner.status}")
 
 def search_learner_by_id(learners, learner_id):
   for learner in learners:
