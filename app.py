@@ -233,21 +233,15 @@ def count_learners(learner_list):
 # 9. Exception Handling
 # ==============================
 
-def get_average_mark():
+def read_mark(prompt="Enter the mark: ", minimum=0, maximum=100):
   try: 
-    test1 = int(input("Enter the mark for test1: "))
-    test2 = int(input("Enter the mark for test2: "))
-
-    if not (0 <= test1 <= 100) or not(0 <= test2 <= 100):
+    mark = float(input(prompt))
+    if mark < minimum or mark > maximum:
       raise ValueError("Invalid mark: must be between 0 and 100")
-  
-    result = (test1 + test2) / 2
-    return result
+    return mark
 
   except ValueError as e: 
     print(e)
-
-def read_mark(prompt="Enter mark: ")
 
 def entering_learner_mark(prompt):
   try: 
