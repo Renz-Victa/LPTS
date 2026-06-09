@@ -4,7 +4,7 @@
 # Date: 02/05/2026
 # ==============================
 
-from tkinter import Tk, messagebox
+from tkinter import Tk as tk, messagebox
 
 # ==============================
 # 1. Learner Management
@@ -32,7 +32,7 @@ def add_new_learners(learner_id, learner, name, age, course=""):
   
   course = input("Enter a course name: ").strip()
   messagebox.showinfo("Success", "Learner added successfully")
-  
+
 def view_learner_details(learner_id):
   learner = search_learner_by_id(learner_id)
   if learner:
@@ -41,7 +41,13 @@ def view_learner_details(learner_id):
     print(f"No learner found with ID: {learner_id}")
 
 def update_learner_details(learner_id):
-  learner = search_learner_by_id(learner_id)
+  learner = search_learner_by_id(learner, learner_id)
+  learner_id = entering_learner_mark("Enter learner ID: ")
+
+  name = input("Enter new name: ").strip()
+  age = entering_learner_mark("Enter new age: ")
+  course = input("Enter new course: ").strip()
+  
   if learner:
     if name:
       learner.set_name(name)
@@ -53,9 +59,13 @@ def update_learner_details(learner_id):
   else:
     print(f"No learner found with ID: {learner_id}")
 
-def remove_learners(learner_id):
+    learner.update_details(name, age, course)
+    messagebox.showinfor("Updated", "Updated Successfully!")
+
+def remove_learners(learners, learner_id):
   global learners_db
-  learner = search_learner_by_id(learner_id)
+  learner = search_learner_by_id(learners, learner_id)
+  learner_id = entering_learner_mark("Enter learner: ")
 
   if learner:
     learners_db.remove(learner)
@@ -63,13 +73,16 @@ def remove_learners(learner_id):
   else:
     print(f"No learner found with ID: {learner_id}")
 
+  learners.remove(learners)
+  messagebox.showinfo("Deleted", "Learner removed successfully!")
+
 # ==============================
 # 2. Inheritance
 # ==============================
 
 class learner:
   def __init__(self, name, age, course=""):
-    self.learner_id = learner_id
+    self.learner_id = learner
     self.name = name
     self.age = age
     self.course = course
@@ -155,6 +168,23 @@ def certificate(mark):
   if mark >= 50:
     print("Learner qualifies for a certificate")
 
+def show_learner_result(learners):
+  learner_id = entering_learner_mark("Enter learner ID: ")
+  learner = search_learner_by_id(learners, learner_id)
+
+  if learner is None:
+    messagebox.showinfo("Unknown", "Learner not found!")
+    return
+  
+  print(f"\nResult for {learner.name}")
+  print(f"Average: {learner.average_mark:.2f}")
+  print(f"Performance: {learner.details}")
+
+  if learner.certificate():
+    messagebox.showinfo("Result", f"{learner.name} qualifies for a certificate.")
+  else: 
+    messagebox.showinfo("Result", f"{learner.name} does not qualify for a certificate.")
+
 # ==============================
 # 6. Repetition Structures
 # ==============================
@@ -191,8 +221,22 @@ for subject, mark in learner.items():
 # 7. Functions
 # ==============================
 
-def enter_marks():
-  print("Entering marks")
+def enter_marks(learner):
+  learner_id = entering_learner_mark("Enter learner ID: ")
+  learner = learners_db(learner, learner_id)
+  print("Capturing Marks...")
+
+  if learner is None:
+    messagebox.showerror("Not found", "Learner not found")
+    return
+  
+  mark = entering_learner_mark("How many marks do you want to enter?")
+
+  for count in range(mark):
+    mark = read_mark(f"Enter mark {count + 1}: ")
+    learner.add_mark(mark)
+
+messagebox.showinfo("System Message", "Successful!")
 
 def calculate_average(marks):
   if not marks:
@@ -213,8 +257,12 @@ def display_learner_summary(learner):
   print(f"Results: {learner.status}")
 
 def search_learner_by_id(learners, learner_id):
+  print("\nSearching learner...")
+  learner_id = entering_learner_mark("Enter learner ID: ")
+  learner = search_learner_by_id(learners, learner_id)
   for learner in learners:
     if learner.learner_id == learner_id:
+      display_learner_summary(learner)
       return learner
   return None
 
@@ -269,9 +317,15 @@ def entering_learner_mark(prompt):
 
 
 def show_menu():
-  print("1. Add Student")
-  print("2. View Students")
-  print("3. Exit")
+  print("\n Learner Progress Tracking System (LPTS) ")
+  print("1. Add Learner")
+  print("2. View all Learners")
+  print("3. Enter marks")
+  print("4. Search learner")
+  print("5. Update learner")
+  print("6. Remove learner")
+  print("7. Show learner results")
+  print("8. Exit")
   
 choice = input("Select an option: ")
   
@@ -284,45 +338,36 @@ elif choice == "3":
 else: 
     print("Menu selection error: Invalid option chosen")
 
+def view_learners(learners):
+  if not learners:
+    messagebox.showinfo("No learners", "There are no learners showing")
+    return
+  
+  for learner in learners:
+    display_learner_summary(learner)
+
 # ==============================
 # 10. Lists
 # ==============================
 
 def demo_lists():
-  tests = ["test1", "test2", "test3"]
-
   for tests in tests:
     print(tests)
 
-student = {
-  "name": "John",
-  "Mathematics": "80",
-  "Programming": "85",
-  "English": "90"
-}
-
-students = [
-  {"name": "John", "mark": 80},
-  {"name": "Sarah", "mark": 65},
-  {"name": "Mike", "mark": 50},
-]
-
-for student_record in students:
+for student_record in learner:
   print(student_record["name"], student_record["mark"])
-
-students = ["John", "Sarah", "Mike"]
   
 def is_passing(mark):
   return mark >= 50
 
-passing_students = list(filter(lambda student: is_passing(student["mark"]), students))
+passing_students = list(filter(lambda learner: is_passing(learner["mark"]), learner))
 print("Passing students:", passing_students)
 
-if 80 in student:
+if 80 in learner:
   print("Found")
 else: print("Not Found")
 
-for score in student.items():
+for score in learner.items():
   if score > 50:
     print(subject, score)
 
@@ -356,3 +401,39 @@ entry = tk.Entry(root)
 entry.pack()
 
 root.mainloop()
+
+def main():
+  learners = []
+
+  while True:
+    show_menu()
+
+    try: 
+      choice = int(input("Enter your choice: "))
+    except ValueError: 
+      messagebox.showerror("Error", "Please enter a valid number!")
+    continue
+  
+    if choice == 1:
+      add_new_learners(learners)
+    elif chocie == 2:
+      enter_marks(learners)
+    elif choice == 3:
+      view_learners(learners)
+    elif choice == 4:
+      search_learner_by_id(learners)
+    elif choice == 5:
+      update_learner_details(learners)
+    elif choice == 6:
+      remove_learners(learners)
+    elif choice == 7:
+      show_learner_result(learners)
+    elif choice == 8:
+      if messagebox.askyesno("Exit", "Are you sure want to exit?"):
+        print("Thank You For Coming!")
+        break
+    else:
+      messagebox.showerror("Error", "Please choocse an option from 1 to 8.")
+     
+if __name__ == "__main__":
+  main()
