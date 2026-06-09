@@ -1,7 +1,9 @@
 # ==============================
 # Learner Progress Tracking System
-# EDUV12466121@vossie.net
-# Date: 02/05/2026
+# ITPRA0
+# Program Project
+# Eduvos Online
+# EDUV12466121
 # ==============================
 
 from tkinter import Tk as tk, messagebox
@@ -437,3 +439,18 @@ def main():
      
 if __name__ == "__main__":
   main()
+
+# ===================
+# 12. Referencing
+# ===================
+# ------------------------------
+# Python Software Foundation, 2026. The Python Tutorial. Available at: https://docs.python.org/3/tutorial/ [14 May 2026]
+# ------------------------------
+# Python Software Foundation, 2026. Built-in Functions. Available at: https://docs.python.org/3/library/functions.html [Accessed 19 June 2026]
+# ------------------------------
+# Python Software Foundation, 2026. Errors and Exceptions, Available at: https://docs.python.org/3/tutorial/errors.html [Accessed 23 June 2026]
+# ------------------------------
+# Python Software Foundation, 2026. Classes. Available at: https://docs.python.org/3/tutorial/classes.html [26 June 2026]
+# ------------------------------
+# Python Software Foundation, 2026. tkinter: Python interface to Tcl/Tk. Available at: https://docs.python.org/3/library/tkinter.html [Accessed 28 June 2026]
+# ------------------------------
