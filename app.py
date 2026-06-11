@@ -55,8 +55,8 @@ def update_learner_details(learner_id):
       learner.set_name(name)
     if age:
       learner.set.age(age)
-    if subject:
-      learner.set.subject(subject)
+    if course:
+      learner.set.subject(course)
     print(f"Learner {learner_id} updated successfully.")
   else:
     print(f"No learner found with ID: {learner_id}")
@@ -97,11 +97,13 @@ class learner:
       print(f"Hello!, {self.name}!")
 
 class Person:
+  """Base class for personal details"""
   def __init__(self, name, age):
     self.name = name
     self.age = age
 
 class Learner(Person):
+  """Derived class that stores the learner's assessment information and course"""
   def __init__(self, name, age, learner_id, course=""):
     super().__init__(name, age)
     self.learner_id = learner_id
@@ -191,26 +193,11 @@ def show_learner_result(learners):
 # 6. Repetition Structures
 # ==============================
 
-def recursive_total():
-  for i in range(1, 9):
-    if i == 10:
-      break
-  print(i)
-
-print("---")
-
-for i in range(1, 6):
-  if i == 3:
-    continue
-  print(i)
-
-print("---")
-
-while mark <= 0:
-  print(mark)
-  mark += 1
-
-print("---")
+def recursive_total(numbers, index=0):
+  """Adds the marks by 1 each time"""
+  if index == len(numbers):
+    return 0
+  return numbers [index] + recursive_total(numbers, index + 1)
 
 # ==============================
 # 7. Functions
@@ -285,6 +272,7 @@ def count_learners(learner_list):
 # ==============================
 
 def read_mark(prompt="Enter the mark: ", minimum=0, maximum=100):
+  """Argument Function to validate the learner marks with default and keyword arguments"""
   try: 
     mark = float(input(prompt))
     if mark < minimum or mark > maximum:
@@ -362,9 +350,9 @@ if 80 in learner:
   print("Found")
 else: print("Not Found")
 
-for score in learner.items():
-  if score > 50:
-    print(subject, score)
+for mark in learner.items():
+  if mark > 50:
+    print(mark)
 
 # ==============================
 # 11. GUI Requirement
