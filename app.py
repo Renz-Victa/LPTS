@@ -149,7 +149,7 @@ class AverageMark:
     self.__average_mark >= certificate
 
 # ==============================
-# Decision Structures
+# 5. Decision Structures
 # ==============================
 
 def check_eligibility(learner_age):
@@ -205,19 +205,12 @@ for i in range(1, 6):
   print(i)
 
 print("---")
-  
-mark = 1
 
 while mark <= 0:
   print(mark)
   mark += 1
 
 print("---")
-
-learner = Learner()
-
-for subject, mark in learner.items():
-  print(subject, mark)
 
 # ==============================
 # 7. Functions
@@ -441,8 +434,9 @@ if __name__ == "__main__":
   main()
 
 # ===================
-# 12. Referencing
+# 12. References
 # ===================
+
 # ------------------------------
 # Python Software Foundation, 2026. The Python Tutorial. Available at: https://docs.python.org/3/tutorial/ [14 May 2026]
 # ------------------------------
